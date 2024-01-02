@@ -15,6 +15,10 @@ A C program for processing and querying FIFA World Cup data (1954-2014).
    git clone https://github.com/berkayozcann/soccerworldcup_data_system.git
    cd soccerworldcup_data_system
 
+2.Open the project in CodeLite and build it.
+
+3.Run the executable.
+
 ## Usage
 - The program provides a text-based menu for various functionalities related to World Cup data.
 - Follow the on-screen instructions to perform data processing and queries.

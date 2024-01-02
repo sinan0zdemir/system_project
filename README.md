@@ -12,16 +12,24 @@ A C program for processing and querying FIFA World Cup data (1954-2014).
 ## Getting Started
 1. Clone the repository.
    ```bash
-   git clone https://github.com/yourusername/soccerworldcup_data_system.git
+   git clone https://github.com/berkayozcann/soccerworldcup_data_system.git
    cd soccerworldcup_data_system
-Open in CodeLite, build, and run.
-Usage
-Text-based menu for data processing and queries.
-Contributing
-Fork the repository.
-Create a new branch (git checkout -b feature/your-feature).
-Commit your changes (git commit -m 'Add some feature').
-Push to the branch (git push origin feature/your-feature).
-Create a new pull request.
-License
-This project is licensed under the MIT License.
+
+## Usage
+- The program provides a text-based menu for various functionalities related to World Cup data.
+- Follow the on-screen instructions to perform data processing and queries.
+
+## Contributing
+If you'd like to contribute to this project, please follow these steps:
+1. Fork the repository.
+2. Create a new branch (`git checkout -b initial-setup`).
+3. Commit your changes (`git commit -m 'Add initial setup'`).
+4. Push to the branch (`git push origin initial-setup`).
+5. Create a new pull request.
+
+## License
+This project is licensed under the [MIT License](LICENSE).
+
+## Acknowledgments
+
+Dataset sources: FIFA World Cup Archive and https://github.com/tugraz-isds/datasets/blob/master/soccer_world_cup_1954_2014

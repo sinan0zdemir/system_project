@@ -93,6 +93,12 @@
     </Configuration>
   </Settings>
   <VirtualDirectory Name="src">
+    <File Name="match.c"/>
+    <File Name="goals.c"/>
+    <File Name="squads.c"/>
+    <File Name="match.h"/>
+    <File Name="goals.h"/>
+    <File Name="squads.h"/>
     <File Name="main.c"/>
   </VirtualDirectory>
 </CodeLite_Project>

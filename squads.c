@@ -45,15 +45,15 @@ void readSquadsData(struct Squad **squads, int *numSquads) {
             exit(EXIT_FAILURE);
             }
         }                                  
-        printf("%d %s %s %d %s %s %s %s\n", 
-               (*squads)[*numSquads].year,
-               (*squads)[*numSquads].hostCountry, 
-               (*squads)[*numSquads].country,
-               (*squads)[*numSquads].jerseyNumber, 
-               (*squads)[*numSquads].position,
-               (*squads)[*numSquads].name, 
-               (*squads)[*numSquads].clubName,
-               (*squads)[*numSquads].clubCountry);
+        // printf("%d %s %s %d %s %s %s %s\n", 
+        //        (*squads)[*numSquads].year,
+        //        (*squads)[*numSquads].hostCountry, 
+        //        (*squads)[*numSquads].country,
+        //        (*squads)[*numSquads].jerseyNumber, 
+        //        (*squads)[*numSquads].position,
+        //        (*squads)[*numSquads].name, 
+        //        (*squads)[*numSquads].clubName,
+        //        (*squads)[*numSquads].clubCountry);
 
         
         (*numSquads)++;

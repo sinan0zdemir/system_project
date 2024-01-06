@@ -38,13 +38,13 @@ void readGoalsData(struct Goal **goals, int *numGoals) {
             }
         }
                              
-      printf("%d %s %d %s %s %d\n", 
-            (*goals)[*numGoals].year, 
-            (*goals)[*numGoals].hostCountry,
-            (*goals)[*numGoals].matchID, 
-            (*goals)[*numGoals].team,
-            (*goals)[*numGoals].player, 
-            (*goals)[*numGoals].minute);         
+    //   printf("%d %s %d %s %s %d\n", 
+    //         (*goals)[*numGoals].year, 
+    //         (*goals)[*numGoals].hostCountry,
+    //         (*goals)[*numGoals].matchID, 
+    //         (*goals)[*numGoals].team,
+    //         (*goals)[*numGoals].player, 
+    //         (*goals)[*numGoals].minute);         
                
         (*numGoals)++;
         *goals = realloc(*goals, (*numGoals + 1) * sizeof(struct Goal));

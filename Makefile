@@ -2,8 +2,7 @@ CC = gcc
 CFLAGS = -Wall -g
 
 # List of source files
-SRC_FILES = goals.c match.c squads.c main.c query.c
-
+SRC_FILES = goals.c match.c squads.c main.c 
 # Generate the corresponding object file names
 OBJ_FILES = $(SRC_FILES:.c=.o)
 

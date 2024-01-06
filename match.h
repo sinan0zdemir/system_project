@@ -20,6 +20,11 @@
     };
 
     void readMatchesData(struct Match **matches, int *numMatches);
+    
+    struct Match findMatchById(struct Match *matches, int size, int matchID);
+
     void printMatch (struct Match match);
+
+    int calculateTotalGoals(struct Match *matches, int size, int year);
 
 #endif

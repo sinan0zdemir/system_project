@@ -21,8 +21,7 @@ void readMatchesData(struct Match **matches, int *numMatches) {
     int result=0;
 
 
-
-    while (fscanf(file, "%d,%49[^,],%d,%49[^,],%d-%d-%d,%49[^,],%49[^,],%49[^,],%d,%d\n",
+  while (fscanf(file, "%d,%49[^,],%d,%49[^,],%d-%d-%d,%49[^,],%49[^,],%49[^,],%d,%d\n",
            &(*matches)[*numMatches].year,
            (*matches)[*numMatches].hostCountry,
            &(*matches)[*numMatches].matchID,
@@ -82,6 +81,7 @@ void readMatchesData(struct Match **matches, int *numMatches) {
 }
 
 
+
 void printMatch(struct Match match){
     if (match.year == 0)
         printf("Match Not Found");
@@ -100,4 +100,31 @@ void printMatch(struct Match match){
                 match.score1,
                 match.score2);
     }
+}
+
+
+struct Match findMatchById(struct Match *matches, int size, int matchID) {
+    struct Match notFoundMatch = {0}; // Assuming matchID cannot be 0 for a valid match
+
+    for (int i = 0; i < size; ++i) {
+        if (matches[i].matchID == matchID) {
+            return matches[i]; // Match found, return the Match structure
+        }
+    }
+
+    // Match not found, return a default Match structure (you can modify this behavior)
+    return notFoundMatch;
+}
+
+
+int calculateTotalGoals(struct Match *matches, int size, int year) {
+    int totalGoals = 0;
+
+    for (int i = 0; i < size; ++i) {
+        if (matches[i].year == year) {
+            totalGoals += matches[i].score1 + matches[i].score2;
+        }
+    }
+
+    return totalGoals;
 }

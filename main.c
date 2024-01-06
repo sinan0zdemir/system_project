@@ -3,7 +3,6 @@
 #include "goals.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "query.h"
 
 int main() {
     struct Squad *squads = NULL;
@@ -67,7 +66,9 @@ int main() {
     // Perform operations with the data here
     printMatch(thisMatch);
 
-    printSquad(squads, 1998, "Norway", numSquads);
+    // printSquad(squads, 2014, "Germany", numSquads);
+    
+    printf("Total of %d goals were scored", calculateTotalGoals(matches, numMatches, 2014));
     // Free allocated memory
     free(squads);
     free(matches);

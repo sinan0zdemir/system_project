@@ -6,7 +6,7 @@
 void readSquadsData(struct Squad **squads, int *numSquads) {
     
     // File opening
-    FILE *file = fopen("/home/berkayozcan/workspaces/soccerworldcup_data_system/soccerworldcup_data_system/datasets/squads.csv", "r");
+    FILE *file = fopen("datasets/squads.csv", "r");
     
     if (!file) {
         perror("Error opening squads.csv");
@@ -68,6 +68,19 @@ void readSquadsData(struct Squad **squads, int *numSquads) {
     
    fclose(file);
  }       
+
+
+void printSquad(struct Squad *squads, int year, char *country, int size){
+    for (int i = 0; i < size; i++) {
+        // Check if the current squad member matches the criteria
+        if (squads[i].year == year && strcmp(squads[i].country, country) == 0) {
+            // Print information about the player
+            printf("Year: %d, Country: %s, Name: %s, Position: %s\n",
+                   squads[i].year, squads[i].country, squads[i].name, squads[i].position);
+        }
+       
+    }
+}
 
     
         

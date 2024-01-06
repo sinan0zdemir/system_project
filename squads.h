@@ -15,6 +15,7 @@
     };
     
     void readSquadsData(struct Squad **squads, int *numSquads);
-    
+
+    void printSquad(struct Squad *squads, int year, char *country, int size);
  #endif
 

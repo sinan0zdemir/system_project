@@ -3,6 +3,7 @@
 #include "goals.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "query.h"
 
 int main() {
     struct Squad *squads = NULL;
@@ -62,9 +63,11 @@ int main() {
 
         exit(EXIT_FAILURE);
     }
-
+    struct Match thisMatch = findMatchById(matches, numMatches, 10); 
     // Perform operations with the data here
+    printMatch(thisMatch);
 
+    printSquad(squads, 1998, "Norway", numSquads);
     // Free allocated memory
     free(squads);
     free(matches);

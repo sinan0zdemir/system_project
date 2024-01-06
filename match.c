@@ -5,7 +5,7 @@
 
 void readMatchesData(struct Match **matches, int *numMatches) {
     
-    FILE *file = fopen("/home/berkayozcan/workspaces/soccerworldcup_data_system/soccerworldcup_data_system/datasets/matches.csv", "r");
+    FILE *file = fopen("datasets/matches.csv", "r");
     
     if (!file) {
         perror("Error opening matches.csv");
@@ -79,4 +79,25 @@ void readMatchesData(struct Match **matches, int *numMatches) {
     }
 
     fclose(file);
+}
+
+
+void printMatch(struct Match match){
+    if (match.year == 0)
+        printf("Match Not Found");
+    else{
+        printf("%d %s %d %s %d-%02d-%02d %s %s %s %d %d\n",
+                match.year,
+                match.hostCountry,
+                match.matchID,
+                match.type,
+                match.date.tm_year + 1900,
+                match.date.tm_mon + 1,
+                match.date.tm_mday,
+                match.location,
+                match.team1,
+                match.team2,
+                match.score1,
+                match.score2);
+    }
 }

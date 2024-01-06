@@ -20,5 +20,6 @@
     };
 
     void readMatchesData(struct Match **matches, int *numMatches);
+    void printMatch (struct Match match);
 
 #endif

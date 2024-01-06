@@ -3,8 +3,7 @@
 #include <stdlib.h>
 
 void readGoalsData(struct Goal **goals, int *numGoals) {
-
-    FILE *file = fopen("/home/berkayozcan/workspaces/soccerworldcup_data_system/soccerworldcup_data_system/datasets/goals.csv", "r");
+    FILE *file = fopen("datasets/goals.csv", "r");
     
     if (!file) {
         perror("Error opening goals");
@@ -60,4 +59,13 @@ void readGoalsData(struct Goal **goals, int *numGoals) {
 
     fclose(file);
 }
-        
+
+void printGoal(struct Goal goal){
+     printf("%d %s %d %s %s %d\n", 
+            goal.year, 
+            goal.hostCountry,
+            goal.matchID, 
+            goal.team,
+            goal.player, 
+            goal.minute);  
+}

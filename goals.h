@@ -13,5 +13,6 @@
     };
     
     void readGoalsData(struct Goal **goals, int *numGoals);
-
+    void printGoal (struct Goal goal);
+    
 #endif

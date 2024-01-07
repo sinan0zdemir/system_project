@@ -52,8 +52,9 @@ int main() {
         printf("4. Find and print goals by year\n");
         printf("5. Find and print player by name\n");
         printf("6. Find and print goals by name\n");
-        printf("7. Exit\n");
-        printf("Enter your choice (1-7): ");
+        printf("7. Find and print MatchID\n");
+        printf("8. Exit\n");
+        printf("Enter your choice (1-8): ");
         
         // Get user choice
         scanf("%d", &choice);
@@ -118,15 +119,18 @@ int main() {
                 findGoalsByName(goals, numGoals, playerName);
                 break;
             }
-
-            case 7:
+            case 7:{
+                findMatchIDsByCriteria(matches, numMatches);
+                break;
+            }
+            case 8:
                 printf("Exiting program. Goodbye!\n");
                 break;
 
             default:
-                printf("Invalid choice. Please enter a number between 1 and 6.\n");
+                printf("Invalid choice. Please enter a number between 1 and 8.\n");
         }
-    } while (choice != 7);
+    } while (choice != 8);
     
     
     

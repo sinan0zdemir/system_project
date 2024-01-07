@@ -29,4 +29,5 @@
 
     void printMatchesByYearAndCountry(struct Match *matches, int size, int year, char* country);
 
+    void findMatchIDsByCriteria(struct Match *matches, int size);
 #endif

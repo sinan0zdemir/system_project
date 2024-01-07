@@ -125,3 +125,28 @@ void printMatchesByYearAndCountry(struct Match *matches, int size, int year, cha
         }
     }
 }
+
+void findMatchIDsByCriteria(struct Match *matches, int size) {
+    int year;
+    char team1[50], team2[50];
+
+    // Get user input for the criteria
+    printf("Enter the year : ");
+    scanf("%d", &year);
+    
+    printf("Reminding! The order of the teams is important.\n");
+
+    printf("Enter team1 : ");
+    scanf("%s", team1);
+
+    printf("Enter team2 : ");
+    scanf("%s", team2);
+
+    // Search for matching match IDs
+    printf("\nMatching Match ID...\n");
+    for (int i = 0; i < size; i++) {
+        if (matches[i].year == year && strcmp(matches[i].team1, team1) == 0 && strcmp(matches[i].team2, team2) == 0) {
+            printf("Match ID: %d\n", matches[i].matchID);
+        }
+    }
+}

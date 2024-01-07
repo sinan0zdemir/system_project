@@ -5,8 +5,10 @@ A C program for processing and querying FIFA World Cup data (1954-2014).
 ## Project Structure
 - **src:** Contains the source code files.
   - `main.c`: Main program file.
-  - `data_processing.c`: Data processing functions.
-  - `queries.c`: Query functions.
+  - `match.c`: Reads matches from csv and contains various query methods.
+  - `squads.c`: Reads squads from csv and contains various query methods.
+  - `goals.c`: Reads goals from csv and contains various query methods.
+
 - **datasets:** Includes World Cup squads, matches, and goals datasets.
 
 ## Getting Started

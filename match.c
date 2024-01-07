@@ -1,7 +1,7 @@
 #include "match.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
+#include <string.h>
 
 void readMatchesData(struct Match **matches, int *numMatches) {
     
@@ -21,19 +21,17 @@ void readMatchesData(struct Match **matches, int *numMatches) {
     int result=0;
 
 
-  while (fscanf(file, "%d,%49[^,],%d,%49[^,],%d-%d-%d,%49[^,],%49[^,],%49[^,],%d,%d\n",
+  while (fscanf(file, "%d,%49[^,],%d,%49[^,],%49[^,],%49[^,],%49[^,],%49[^,],%d,%d\n",
            &(*matches)[*numMatches].year,
            (*matches)[*numMatches].hostCountry,
            &(*matches)[*numMatches].matchID,
            (*matches)[*numMatches].type,
-           &(*matches)[*numMatches].date.tm_year,
-           &(*matches)[*numMatches].date.tm_mon,
-           &(*matches)[*numMatches].date.tm_mday,
+           (*matches)[*numMatches].date,
            (*matches)[*numMatches].location,
            (*matches)[*numMatches].team1,
            (*matches)[*numMatches].team2,
            &(*matches)[*numMatches].score1,
-        &(*matches)[*numMatches].score2) == 12) 
+            &(*matches)[*numMatches].score2) == 10) 
     {
         if (result == EOF) {
             if (feof(file)) {
@@ -46,25 +44,18 @@ void readMatchesData(struct Match **matches, int *numMatches) {
             }
         }                                  
         
-        
-        // Set tm_year to years since 1900, adjust it
-        (*matches)[*numMatches].date.tm_year -= 1900;
-        // Set tm_mon to be in the range 0-11
-        (*matches)[*numMatches].date.tm_mon--;
-
-        printf("%d %s %d %s %d-%02d-%02d %s %s %s %d %d\n",
-               (*matches)[*numMatches].year,
-               (*matches)[*numMatches].hostCountry,
-               (*matches)[*numMatches].matchID,
-               (*matches)[*numMatches].type,
-               (*matches)[*numMatches].date.tm_year + 1900,
-               (*matches)[*numMatches].date.tm_mon + 1,
-               (*matches)[*numMatches].date.tm_mday,
-               (*matches)[*numMatches].location,
-               (*matches)[*numMatches].team1,
-               (*matches)[*numMatches].team2,
-               (*matches)[*numMatches].score1,
-               (*matches)[*numMatches].score2);
+   
+        // printf("%d %s %d %s %s %s %s %s %d %d\n",
+        //        (*matches)[*numMatches].year,
+        //        (*matches)[*numMatches].hostCountry,
+        //        (*matches)[*numMatches].matchID,
+        //        (*matches)[*numMatches].type,
+        //        (*matches)[*numMatches].date,
+        //        (*matches)[*numMatches].location,
+        //        (*matches)[*numMatches].team1,
+        //        (*matches)[*numMatches].team2,
+        //        (*matches)[*numMatches].score1,
+        //        (*matches)[*numMatches].score2);
 
         (*numMatches)++;
         *matches = realloc(*matches, (*numMatches + 1) * sizeof(struct Match));
@@ -86,14 +77,12 @@ void printMatch(struct Match match){
     if (match.year == 0)
         printf("Match Not Found");
     else{
-        printf("%d %s %d %s %d-%02d-%02d %s %s %s %d %d\n",
+        printf("%d %s %d %s %s %s %s %s %d %d\n",
                 match.year,
                 match.hostCountry,
                 match.matchID,
                 match.type,
-                match.date.tm_year + 1900,
-                match.date.tm_mon + 1,
-                match.date.tm_mday,
+                match.date,
                 match.location,
                 match.team1,
                 match.team2,
@@ -117,7 +106,7 @@ struct Match findMatchById(struct Match *matches, int size, int matchID) {
 }
 
 
-int calculateTotalGoals(struct Match *matches, int size, int year) {
+int findGoalsByYear(struct Match *matches, int size, int year) {
     int totalGoals = 0;
 
     for (int i = 0; i < size; ++i) {
@@ -127,4 +116,12 @@ int calculateTotalGoals(struct Match *matches, int size, int year) {
     }
 
     return totalGoals;
+}
+
+void printMatchesByYearAndCountry(struct Match *matches, int size, int year, char* country){
+     for (int i = 0; i < size; ++i) {
+        if (matches[i].year == year && (strcmp(matches[i].team1, country) == 0 || strcmp(matches[i].team2, country) == 0 )) {
+            printMatch(matches[i]);
+        }
+    }
 }

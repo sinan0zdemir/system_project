@@ -25,4 +25,4 @@ $(EXECUTABLE): $(OBJ_FILES)
 # Change to {rm -rf $(OBJ_FILES) $(EXECUTABLE)} on UNIX
 
 clean:
-	del $(OBJ_FILES) $(EXECUTABLE).exe
+	rm -rf $(OBJ_FILES) $(EXECUTABLE)

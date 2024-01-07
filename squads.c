@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "match.h"
 
 void readSquadsData(struct Squad **squads, int *numSquads) {
     
@@ -70,24 +71,57 @@ void readSquadsData(struct Squad **squads, int *numSquads) {
  }       
 
 
-void printSquad(struct Squad *squads, int year, char *country, int size){
+void printSquadByYearCountry(struct Squad *squads, int size, int year, char *country){
     for (int i = 0; i < size; i++) {
         // Check if the current squad member matches the criteria
         if (squads[i].year == year && strcmp(squads[i].country, country) == 0) {
             // Print information about the player
-            printf("Year: %d, Country: %s, Name: %s, Position: %s\n",
-                   squads[i].year, squads[i].country, squads[i].name, squads[i].position);
+            printf("%s %s\n", squads[i].name, squads[i].position);
         }
        
     }
 }
 
-    
+
+int findNumberOfPlayers(struct Squad *squads,  int size, int year, char *country){
+
+    int count = 0;
+    for (int i = 0; i < size; i++) {
+        // Check if the current squad member matches the criteria
+        if (squads[i].year == year && strcmp(squads[i].country, country) == 0) {
+            count++;            
+        }
+    }
+
+    return count;
+}
+
+void findPlayerByName(struct Squad *squads,  int size, char *name){
+    int playerFound = 0;
+    for (int i = 0; i < size; i++) {
+        // Check if the current squad member matches the criteria
+        if (strcmp(squads[i].name, name) == 0) {
+            playerFound = 1;
+            printPlayer(squads[i]);
+        }
+    }
+    if (!playerFound)
+        printf("\nPlayer not found!");
+
+}
         
-        
- 
-    
-    
+void printPlayer(struct Squad player){
+
+    printf(" %d %s %s %d %s %s %s %s\n", 
+        player.year,
+        player.hostCountry, 
+        player.country,
+        player.jerseyNumber, 
+        player.position,
+        player.name, 
+        player.clubName,
+        player.clubCountry);
+}        
 
     
 

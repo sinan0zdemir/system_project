@@ -10,8 +10,8 @@
         int year;
         char hostCountry[50];
         int matchID;
-        char type[30];
-        struct tm date;
+        char type[50];
+        char date[50];
         char location[50];
         char team1[50];
         char team2[50];
@@ -25,6 +25,8 @@
 
     void printMatch (struct Match match);
 
-    int calculateTotalGoals(struct Match *matches, int size, int year);
+    int findGoalsByYear(struct Match *matches, int size, int year);
+
+    void printMatchesByYearAndCountry(struct Match *matches, int size, int year, char* country);
 
 #endif

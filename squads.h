@@ -14,8 +14,16 @@
     
     };
     
+
     void readSquadsData(struct Squad **squads, int *numSquads);
 
-    void printSquad(struct Squad *squads, int year, char *country, int size);
+    void printPlayer(struct Squad player);
+
+    void printSquadByYearCountry(struct Squad *squads,  int size, int year, char *country);
+
+    int findNumberOfPlayers(struct Squad *squads, int size, int year, char *country);
+    
+    void findPlayerByName(struct Squad *squads, int size, char *name);
+
  #endif
 

@@ -1,28 +1,23 @@
 CC = gcc
-CFLAGS = -Wall -g
+CFLAGS = -Wall -Iinclude
 
-# List of source files
-SRC_FILES = goals.c match.c squads.c main.c 
-# Generate the corresponding object file names
-OBJ_FILES = $(SRC_FILES:.c=.o)
+SRC_DIR = src
+OBJ_DIR = obj
 
-# Name of the executable
-EXECUTABLE = program
+SRC_FILES = $(wildcard $(SRC_DIR)/*.c)
+OBJ_FILES = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRC_FILES))
+TARGET = program
 
-# Default target, which builds the executable
-all: $(EXECUTABLE)
+.PHONY: all clean
 
-# Rule to build the executable from object files
-$(EXECUTABLE): $(OBJ_FILES)
-	$(CC) $(CFLAGS) -o $@ $^
+all: $(TARGET)
 
-# Rule to compile each source file into its object file
-%.o: %.c
-	$(CC) $(CFLAGS) -c -o $@ $<
+$(TARGET): $(OBJ_FILES)
+	$(CC) $(CFLAGS) $^ -o $@
 
-# Clean rule to remove object files and the executable
-# Change to {del $(OBJ_FILES) $(EXECUTABLE).exe} on Windows
-# Change to {rm -rf $(OBJ_FILES) $(EXECUTABLE)} on UNIX
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -rf $(OBJ_FILES) $(EXECUTABLE)
+	rm -rf $(OBJ_DIR) $(TARGET)

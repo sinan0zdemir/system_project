@@ -1,6 +1,9 @@
-#include "goals.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
+#include "goals.h"
+
 
 void readGoalsData(struct Goal **goals, int *numGoals) {
     FILE *file = fopen("datasets/goals.csv", "r");
@@ -58,6 +61,25 @@ void readGoalsData(struct Goal **goals, int *numGoals) {
     }
 
     fclose(file);
+}
+
+
+void findGoalsByName(struct Goal *goals, int size, char* name){
+    int playerFound = 0;
+    for (int i = 0; i < size; i++) {
+        // Check if the current squad member matches the criteria
+        if (strcmp(goals[i].player, name) == 0) {
+            playerFound = 1;
+            printf("%s Year:%d Team:%s Min:%d\n", 
+            goals[i].player, 
+            goals[i].year,
+            goals[i].team, 
+            goals[i].minute);  
+        }
+    }
+    if (!playerFound)
+        printf("\nPlayer not found!");
+
 }
 
 void printGoal(struct Goal goal){

@@ -1,8 +1,8 @@
-#include "squads.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "match.h"
+#include "squads.h"
 
 void readSquadsData(struct Squad **squads, int *numSquads) {
     
@@ -76,7 +76,7 @@ void printSquadByYearCountry(struct Squad *squads, int size, int year, char *cou
         // Check if the current squad member matches the criteria
         if (squads[i].year == year && strcmp(squads[i].country, country) == 0) {
             // Print information about the player
-            printf("%s %s\n", squads[i].name, squads[i].position);
+            printf("%s Position:%s Club:%s\n", squads[i].name, squads[i].position, squads[i].clubName);
         }
        
     }
@@ -102,7 +102,7 @@ void findPlayerByName(struct Squad *squads,  int size, char *name){
         // Check if the current squad member matches the criteria
         if (strcmp(squads[i].name, name) == 0) {
             playerFound = 1;
-            printPlayer(squads[i]);
+            printf("%s Year:%d Country:%s Position:%s Club:%s\n", squads[i].name ,squads[i].year, squads[i].country, squads[i].position, squads[i].clubName);
         }
     }
     if (!playerFound)
